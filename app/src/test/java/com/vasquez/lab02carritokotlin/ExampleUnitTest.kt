@@ -38,6 +38,7 @@ class ExampleUnitTest {
     fun main() {
         val nombreCliente = "Pedrito Flores"        // String (inferido)
         val carrito = mutableListOf<Producto>() // lista vacía de productos
+
         println("Cliente: $nombreCliente")
         println()
 
@@ -53,5 +54,13 @@ class ExampleUnitTest {
         for (producto in carrito) {
             println("Producto(s) agregado al carrito: ${producto.nombre}")
         }
+
+        var subtot = calcularSubtotal(carrito)
+        var IGV = calcularIGV(subtot)
+        var tot = calcularTotal(subtot, IGV)
+
+        println("Subtotal : S/ ${subtot}")
+        println("IGV (18%): S/ ${IGV}")
+        println("TOTAL    : S/ ${tot}")
     }
 }
