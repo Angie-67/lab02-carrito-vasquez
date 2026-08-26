@@ -73,6 +73,24 @@ class ExampleUnitTest {
             println(String.format("%-22s: S/ %8.2f", "Subtotal", subtot))
             println(String.format("%-22s: S/ %8.2f", "IGV (18%)", IGV))
             println(String.format("%-22s: S/ %8.2f", "TOTAL A PAGAR", tot))
+            println("----------------------------------------")
+            val masCaro = carrito.maxByOrNull { it.precio }
+            if (masCaro != null) {
+                println("Producto mas caro: ${masCaro.nombre} " +
+                        String.format("(S/ %.2f)", masCaro.precio))
+            }
+            fun calcularDescuento(total: Double): Double {
+                return when {
+                    total > 5000 -> total * 0.10
+                    total > 3000 -> total * 0.05
+                    else -> 0.0
+                }
+            }
+
+            val desc = calcularDescuento(tot)
+            val totdesc = tot - desc
+            println("Descuento aplicado: ${desc}")
+            println(String.format("%-22s: S/ %8.2f", "TOTAL CON DESCUENTO", totdesc))
         }
 
         mostrarDetalle(carrito)
