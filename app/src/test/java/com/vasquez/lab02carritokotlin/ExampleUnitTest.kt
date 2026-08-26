@@ -15,7 +15,23 @@ data class Producto(
     val precio: Double,
     var cantidad: Int
 )
+fun calcularSubtotal(productos: List<Producto>): Double { var
+        subtotal = 0.0
+    for (p in productos) {
+        subtotal += p.precio * p.cantidad
+    }
+    return subtotal
+}
 
+fun calcularIGV(subtotal: Double): Double {var
+        igv = subtotal * 0.18
+    return igv
+}
+
+fun calcularTotal(subtotal: Double, igv: Double): Double {var
+        total = subtotal + igv
+    return total
+}
 class ExampleUnitTest {
     @Test
 
