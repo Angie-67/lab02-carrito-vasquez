@@ -1,7 +1,6 @@
 package com.vasquez.lab02carritokotlin
 
 fun main() {
-    println("=========================================")
-    println("  CARRITO DE COMPRAS - TIENDA TECSUP  ")
-    println("=========================================")
+    val app = ConsoleApp()
+    app.run()
 }
