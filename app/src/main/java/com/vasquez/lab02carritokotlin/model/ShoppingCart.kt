@@ -58,6 +58,21 @@ class ShoppingCart {
     fun calculateFinalTotal(): Double = calculateTotal() - calculateDiscount()
 
     /**
+     * Encuentra un producto por su nombre (ignorando mayúsculas/minúsculas).
+     */
+    fun findProductByName(name: String): Product? {
+        return products.find { it.name.equals(name, ignoreCase = true) }
+    }
+
+    /**
+     * Elimina un producto por su nombre (ignorando mayúsculas/minúsculas).
+     * Retorna true si se eliminó al menos un elemento.
+     */
+    fun removeProductByName(name: String): Boolean {
+        return products.removeIf { it.name.equals(name, ignoreCase = true) }
+    }
+
+    /**
      * Encuentra el producto con el precio unitario más alto.
      */
     fun findMostExpensiveProduct(): Product? = products.maxByOrNull { it.price }
